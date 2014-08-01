@@ -12,3 +12,4 @@ class AuthTokan < ActiveRecord::Base
   end
 
 end
+ 

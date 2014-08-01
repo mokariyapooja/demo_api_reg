@@ -3,6 +3,12 @@ class Api::V1::RegistrationController < Api::V1::ApplicationController
   def create
  
     @user = User.new(user_params)
+    
+    # @user.photo = params[:photo] if params[:photo].present?
+    # @user.save if @post.valid @user.photo_uplode =  file
+    
+    # @user.photo  (params[:user][:photo])
+   # @user.photo_upload(params[:photo])   
     unless @user.save
       # respond_to do |format|
       #   format.html
@@ -21,7 +27,8 @@ class Api::V1::RegistrationController < Api::V1::ApplicationController
 
   private
   def user_params   
-    params.require(:user).permit(:email,:password,:password_confirmation,:first_name,:last_name,:phone_number,:city,:state,:country,:device_id,:device_type)
+    params.require(:user).permit(:email,:password,:password_confirmation,:firstname,:lastname,:phonenumber,:city,:state,:country,:device_id,:device_type)
   end
  
 end
+ 

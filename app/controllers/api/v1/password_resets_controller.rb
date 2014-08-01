@@ -5,7 +5,7 @@ class Api::V1::PasswordResetsController < Api::V1::ApplicationController
     @user = User.find_by(email: params[:email])
      if @user.present? 
         if @user.send_reset_password_instructions
-          render_json(:success => "mail sent", :status => 200)
+          render_json(:message => "mail sent", :status => 200)
         else
           render_json(:errors => @user.errors.full_messages, :status => 404)
         end
@@ -16,7 +16,7 @@ class Api::V1::PasswordResetsController < Api::V1::ApplicationController
   
   def change_password 
     if @user.update_with_password(change_password_params)
-      render_json(:success => "password update", :status => 200)
+      render_json(:message => "password update", :status => 200)
     else
       render_json(:errors => @user.errors.full_messages, :status => 404)
     end

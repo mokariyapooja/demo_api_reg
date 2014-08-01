@@ -3,20 +3,26 @@ Rails.application.routes.draw do
 
   devise_for :users
   namespace :api , :defaults => { :format => 'json' } do
-    namespace :v1 do 
-       #resources :sessions , :only => [:create , :destroy,:index] do
-       # get "singin"
-       resources :registration, :only => [:create]
-       resources :sessions, :only => [:create] do
-        collection do 
-          post 'destroy'
-        end
-       end
-       post 'update', to: 'user#update', as: :user
-       get 'profile', to: 'user#profile', as: :user_profile
-       post 'change_password', to: 'password_resets#change_password', as: :password_resets
-       post 'create', to: 'password_resets#create', as: :sent_mail
-      #resources :password_resets, :only => [:change_password]
+    scope :module => :v1 do 
+      #  #resources :sessions , :only => [:create , :destroy,:index] do
+      #  # get "singin"
+      #  resources :registration, :only => [:create]
+      #  resources :sessions, :only => [:create] do
+      #   collection do 
+      #     post 'destroy'
+      #   end
+      #  end
+      post 'update', to: 'user#update', as: :user
+      get 'profile', to: 'user#profile', as: :user_profile
+      # # post 'test', to: 'user#test', as: :test
+      #  post 'change_password', to: 'password_resets#change_password', as: :password_resets
+      #  post 'create', to: 'password_resets#create', as: :sent_mail
+      # #resources :password_resets, :only => [:change_password]
+      post 'signup' => 'registration#create',:as=>:signup
+      post 'login' => 'sessions#create',:as => :end_user_login
+      get 'logout' => 'sessions#destroy', :as => :end_user_logout
+      post 'forgot_password' => 'password_resets#create'
+      post 'change_password' => 'password_resets#change_password'
     end
   end
   

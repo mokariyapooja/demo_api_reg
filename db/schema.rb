@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140729103402) do
+ActiveRecord::Schema.define(version: 20140731114753) do
 
   create_table "auth_tokans", force: true do |t|
     t.string   "user_id"
@@ -33,14 +33,18 @@ ActiveRecord::Schema.define(version: 20140729103402) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.decimal  "phone_number"
+    t.string   "firstname"
+    t.string   "lastname"
+    t.decimal  "phonenumber"
     t.string   "city"
     t.string   "state"
     t.string   "country"
     t.string   "device_id"
     t.string   "device_type"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

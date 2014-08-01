@@ -24,7 +24,7 @@ class Api::V1::ApplicationController < ActionController::Base
 
 
   def define_current_user
-    @auth_tokan =AuthTokan.find_by(tokan: params[:tokan])
+    @auth_tokan =AuthTokan.find_by(tokan: params[:authentication_token])
     if @auth_tokan.present?
       @user = User.find(@auth_tokan.user_id)
       unless @user.present? 
@@ -34,4 +34,4 @@ class Api::V1::ApplicationController < ActionController::Base
       render_json(:errors => "invalid AuthTokan", :status => 404)
     end
   end
-end
+end 
