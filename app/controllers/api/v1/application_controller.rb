@@ -5,7 +5,6 @@ class Api::V1::ApplicationController < ActionController::Base
   #skip_before_filter :verify_authenticity_token, :if => Proc.new { |c| c.request.format == 'application/json' }
 
   protected
-
   def render_json(json)
     callback = params[:callback]
     response = begin
@@ -21,7 +20,6 @@ class Api::V1::ApplicationController < ActionController::Base
   def bad_record
     render_json({:errors => "No Record Found!", :status => 404}.to_json)
   end
-
 
   def define_current_user
     @auth_tokan = AuthTokan.find_by(tokan: params[:authentication_token])
