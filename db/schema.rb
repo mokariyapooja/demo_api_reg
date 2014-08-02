@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140731114753) do
+ActiveRecord::Schema.define(version: 20140802101814) do
 
   create_table "auth_tokans", force: true do |t|
     t.string   "user_id"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20140731114753) do
     t.datetime "updated_at"
     t.string   "firstname"
     t.string   "lastname"
-    t.decimal  "phonenumber"
+    t.integer  "phonenumber"
     t.string   "city"
     t.string   "state"
     t.string   "country"

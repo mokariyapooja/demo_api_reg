@@ -1,23 +1,10 @@
 Rails.application.routes.draw do
   
-
   devise_for :users
   namespace :api , :defaults => { :format => 'json' } do
     scope :module => :v1 do 
-      #  #resources :sessions , :only => [:create , :destroy,:index] do
-      #  # get "singin"
-      #  resources :registration, :only => [:create]
-      #  resources :sessions, :only => [:create] do
-      #   collection do 
-      #     post 'destroy'
-      #   end
-      #  end
       post 'update', to: 'user#update', as: :user
       get 'profile', to: 'user#profile', as: :user_profile
-      # # post 'test', to: 'user#test', as: :test
-      #  post 'change_password', to: 'password_resets#change_password', as: :password_resets
-      #  post 'create', to: 'password_resets#create', as: :sent_mail
-      # #resources :password_resets, :only => [:change_password]
       post 'signup' => 'registration#create',:as=>:signup
       post 'login' => 'sessions#create',:as => :end_user_login
       get 'logout' => 'sessions#destroy', :as => :end_user_logout
@@ -25,13 +12,6 @@ Rails.application.routes.draw do
       post 'change_password' => 'password_resets#change_password'
     end
   end
-  
-
-  #      #GET  "home" => "sessions/home" as: "home"
-  #      get "sign_in", :to => "devise/sessions#new", as :user
-
-  #     #GET "new" => "registration/new" as: "new"
-  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,7 +1,7 @@
 class AddFeildsToUsers < ActiveRecord::Migration
   def change
-    add_column :users, :firstname, :string
-    add_column :users, :lastname, :string
+    add_column :users, :firstname, :text
+    add_column :users, :lastname, :text
     add_column :users, :phonenumber, :number
     add_column :users, :city, :string
     add_column :users, :state, :string
